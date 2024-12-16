@@ -368,5 +368,62 @@
             imagesToAnimate.forEach(image => observer.observe(image));
         });
     </script>
+    
+   <section class="product-section" id="product" style="position: relative; margin: 0; padding: 0;">
+    <img 
+        src="images/adrian-regeci-gGz0zxpIBNI-unsplash.jpg" 
+        alt="Product Image" 
+        style="width: 100vw; height: 100vh; object-fit: cover; display: block;">
+    <div 
+        class="text-overlay" 
+        style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%); color: white; text-align: right;">
+        <h1 style="margin: 0; font-size: 2em;">PRODUCT</h1>
+        <p style="margin: 0; font-size: 1.2em;">Gear Up for the Future, Wear the Power</p>
+    </div>
+</section>
+
+<section>
+  <!-- Centered SHOP text -->
+  <p class="description" style="text-align: center; font-size: 2em; margin: 20px 0;">SHOP</p>
+
+  <!-- Gallery of images -->
+  <div class="rocket-gallery" style="display: flex; gap: 10px; justify-content: center;">
+    <img src="images/unnamed-2-1.jpg" alt="Rocket Image 1" style="width: 200px; height: auto;">
+    <img src="images/bb.jpg" alt="Rocket Image 2" style="width: 200px; height: auto;">
+    <img src="images/LD0005309557.jpg" alt="Rocket Image 3" style="width: 200px; height: auto;">
+  </div>
+</section>
+
+<section>
+  <footer id="contact" class="footer" style="text-align: center; padding: 20px; background-color: #000000;">
+    <h2 style="margin: 0 0 10px;">Contact Us</h2>
+    <p style="margin: 0;">Email: contact@infiniteskies.com</p>
+  </footer>
+</section>
+
+<!-- Script pour les animations au scroll -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.05 // Déclenche à 5% de visibilité
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate");
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        const imagesToAnimate = document.querySelectorAll(".animate-on-scroll");
+        imagesToAnimate.forEach(image => observer.observe(image));
+    });
+</script>
 </body>
 </html>
