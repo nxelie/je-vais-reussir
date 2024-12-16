@@ -374,47 +374,57 @@
 </section>
 
 <section>
-  <!-- Centered SHOP text -->
-  <p class="description" style="text-align: center; font-size: 3rem; margin: 20px 0;">SHOP</p>
-
-  <!-- Gallery of images -->
-  <div class="rocket-gallery" style="display: flex; gap: 10px; justify-content: center;">
-    <img src="images/unnamed (2) (1).jpg" alt="Rocket Image 1" style="width: 500px; height: auto;">
-    <img src="images/bb.png" alt="Rocket Image 2" style="width: 500px; height: auto;">
-    <img src="images/LD0005309557_2 (1) (1).jpg" alt="Rocket Image 3" style="width: 500px; height: auto;">
-  </div>
+<!-- Centered SHOP text -->
+<p class="description" style="text-align: center; font-size: 3rem; margin: 20px 0;">SHOP</p>
+<!-- Gallery of images -->
+<div class="rocket-gallery" style="display: flex; gap: 10px; justify-content: center;">
+<a href="#" class="shop-item" style="display: inline-block; overflow: hidden;">
+<img src="images/unnamed-2-1.jpg" alt="Rocket Image 1" style="width: 500px; height: auto; transition: transform 0.3s ease;">
+</a>
+<a href="#" class="shop-item" style="display: inline-block; overflow: hidden;">
+<img src="images/bb.jpg" alt="Rocket Image 2" style="width: 500px; height: auto; transition: transform 0.3s ease;">
+</a>
+<a href="#" class="shop-item" style="display: inline-block; overflow: hidden;">
+<img src="images/LD0005309557.jpg" alt="Rocket Image 3" style="width: 500px; height: auto; transition: transform 0.3s ease;">
+</a>
+</div>
 </section>
-
 <section>
-  <footer id="contact" class="footer" style="text-align: center; padding: 20px; background-color: #000000;">
-    <h2 style="margin: 0 0 10px;">Contact Us</h2>
-    <p style="margin: 0;">Email: contact@infiniteskies.com</p>
-  </footer>
+<footer id="contact" class="footer" style="text-align: center; padding: 20px; background-color: #000000;">
+<h2 style="margin: 0 0 10px;">Contact Us</h2>
+<p style="margin: 0;">Email: contact@infiniteskies.com</p>
+</footer>
 </section>
-
-<!-- Script pour les animations au scroll -->
+<!-- Script pour les animations au scroll et survol -->
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const observerOptions = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.05 // Déclenche à 5% de visibilité
-        };
-
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("animate");
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        const imagesToAnimate = document.querySelectorAll(".animate-on-scroll");
-        imagesToAnimate.forEach(image => observer.observe(image));
-    });
+document.addEventListener("DOMContentLoaded", () => {
+const observerOptions = {
+root: null,
+rootMargin: "0px",
+threshold: 0.05 // Déclenche à 5% de visibilité
+};
+const observerCallback = (entries, observer) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add("animate");
+observer.unobserve(entry.target);
+}
+});
+};
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+const imagesToAnimate = document.querySelectorAll(".animate-on-scroll");
+imagesToAnimate.forEach(image => observer.observe(image));
+// Animation au survol des images
+const shopItems = document.querySelectorAll(".shop-item img");
+shopItems.forEach(item => {
+item.addEventListener("mouseover", () => {
+item.style.transform = "scale(1.1)";
+});
+item.addEventListener("mouseout", () => {
+item.style.transform = "scale(1)";
+});
+});
+});
 </script>
 </body>
 </html>
